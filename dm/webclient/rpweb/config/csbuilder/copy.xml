@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project app-id="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         config-dir="${project-dir}/config"
+         source="True"
+         hf-compliant="true">
+
+    <target name="config"
+            type="copy"
+            source-dir="${config-dir}"
+            target-dir="deploy/${app-id}/config">
+    </target>
+    <target name="images"
+            type="copy"
+            source-dir="${project-dir}/images"
+            target-dir="web/${app-id}/images">
+    </target>
+    <target name="data"
+            type="copy"
+            source-dir="${project-dir}/data"
+            target-dir="web/${app-id}/data">
+    </target>
+    <target name="customConfig"
+            type="copy"
+            source-dir="${config-dir}/custom"
+            target-dir="stash/Deploy/config">
+    </target>
+</project>

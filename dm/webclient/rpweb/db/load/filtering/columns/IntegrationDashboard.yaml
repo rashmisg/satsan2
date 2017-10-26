@@ -1,0 +1,70 @@
+entity: FilterDefinition
+version: '1.0'
+data:
+- name: IntegrationDashboard
+  columns:
+  - name: id
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 0
+  - name: DocumentId
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 1
+  - name: CamelExchangeId
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 2
+  - name: OperationName
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 3
+  - name: FormatType
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 4
+  - name: FormatVer
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 5
+  - name: ErrorMessage
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 6
+  - name: ComponentName
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 7
+  - name: ComponentId
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 8
+  - name: ComponentVer
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 9
+  - name: Endpoint
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 10
+  - name: Hostname
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 11
+  - name: Direction
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 12
+  - name: Side
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 13
+  - name: SenderId
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 14
+  - name: ReceiverId
+    dataType: S
+    functionalGroup: GENERAL
+    sortSequence: 15
+  

@@ -1,0 +1,43 @@
+##START#########################################################################
+#
+# $URL: https://athena.redprairie.com/svn/prod/lm/trunk/config/Config.mk.linux $
+# $Revision: 77317 $
+# $Author: jfezer $
+#
+# Description: Configure makefile for LM.
+#
+# $McHugh_Copyright-Start$
+#
+# Copyright (c) 2000-2007
+# McHugh Software International
+# Waukesha, Wisconsin
+#
+# This software is furnished under a corporate license for use on a
+# single computer system and can be copied (with inclusion of the
+# above copyright) only for use on such a system.
+#
+# The information in this document is subject to change without notice
+# and should not be construed as a commitment by McHugh Software
+# International.
+#
+# McHugh Software International assumes no responsibility for the use of
+# the software described in this document on equipment which has not been
+# supplied or approved by McHugh Software International.
+#
+# $McHugh_Copyright-End$
+#
+##END###########################################################################
+
+CC         = gcc
+CCC        = g++
+LD         = ld
+WARN       =
+DEFINES    =
+OPTIONS    = -m64 -fPIC -Wno-write-strings
+LIBOPTS    = -ldl
+LDOPTS     = 
+SHLDOPTS   = -shared -E  -L@GCCLIB@
+SHLIBEXT   = .so
+
+
+RANLIB = ranlib

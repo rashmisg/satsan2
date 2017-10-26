@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project app-id="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         js-dir="${project-dir}/js"
+         output-dir="${outputDir}"
+         config-dir="${project-dir}/config"
+         source="True"
+         hf-compliant="true">
+
+    <target name="modules"
+            copyright="false"
+            debug="true"
+            type="module"
+            source-dir="${config-dir}/modules">
+		<include name="modules.xml" />	
+    </target>
+	
+	 <!-- <target name="DM.Modules.MessageStore"
+          type="js"
+          source-dir="${js-dir}/"
+          target-dir="${output-dir}">
+          <include name="MessageStore.js"/>
+    </target> -->
+</project>

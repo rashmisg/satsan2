@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project app-id="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+		 hf-compliant="true"
+         source="True">
+
+    <!-- Common -->
+	<target type="load"
+            source-dir="${DMDIR}/webclient/rpweb/db">
+        <include name="messages" />
+    </target>
+    <target type="load"
+            source-dir="${DMDIR}/webclient/rpweb/db/load/filtering">
+        <include name="messages" />
+    </target>
+
+</project>
+
+

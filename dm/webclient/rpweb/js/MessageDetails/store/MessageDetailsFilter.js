@@ -1,0 +1,22 @@
+Ext.define('JDA.dm.MessageDetails.store.MessageDetailsFilter',{
+  extend:'Ext.data.Store',
+  id:'FilterComboStore',
+  model:'JDA.dm.MessageDetails.model.FilterComboModel',
+  data:[
+    {data:RP.getMessage('dm.MessageStore.messages.documentId')},
+    {data:RP.getMessage('dm.MessageStore.messages.camelExchangeId')},
+    {data:RP.getMessage('dm.MessageStore.messages.operation')},
+    {data:RP.getMessage('dm.MessageStore.messages.formatType')},
+    {data:RP.getMessage('dm.MessageStore.messages.formatVersion')},
+    {data:RP.getMessage('dm.MessageStore.messages.createdDate')},
+    {data:RP.getMessage('dm.MessageStore.messages.componentName')},
+    {data:RP.getMessage('dm.MessageStore.messages.componentId')},
+    {data:RP.getMessage('dm.MessageStore.messages.componentVersion')},
+    {data:RP.getMessage('dm.MessageStore.messages.hostName')},
+    {data:RP.getMessage('dm.MessageStore.messages.endPoint')},
+    {data:RP.getMessage('dm.MessageStore.messages.direction')},
+    {data:RP.getMessage('dm.MessageStore.messages.side')},
+    {data:RP.getMessage('dm.MessageStore.messages.senderId')},
+    {data:RP.getMessage('dm.MessageStore.messages.receiverId')}
+  ]
+});

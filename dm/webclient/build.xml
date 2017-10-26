@@ -1,0 +1,231 @@
+<project name="Data Management" default="default">
+    <property environment="env" />
+
+    <import file="${env.REFSDIR}/buildfiles/client.xml" />
+    <import file="${env.DMDIR}/webclient/rpweb/buildfiles/testing.xml" />
+    <import file="${env.DMDIR}/webclient/rpweb/buildfiles/eslint.xml" />
+
+    
+    <property name="build-properties-file" location="${env.DMDIR}/webclient/rpweb/build/build.properties" />
+    <property name="dm-js" location="${env.DMDIR}/webclient/rpweb/js" />
+    <property name="application" value="dm" />
+    <property name="libConfigs" location="${env.DMDIR}/webclient/library-configs" />
+    <property name="versions" location="${env.DMDIR}/webclient/versions" />
+    <property name="project-dir" value="${env.DMDIR}/webclient/rpweb" />
+
+
+    <!-- Retaining old aliases -->
+    <target name="rpweb" depends="official" />
+    <target name="rpweb-client"  depends="development" />
+    
+    <target name="rpweb-init" if="REFS_DIR"
+            description="Imports the REFS build properties necessary to deploy.">
+        <property name="dm-deploy" value="${deploy-base}/dm" />
+    </target>
+
+    <target name="rpweb-css" if="REFS_DIR" depends="rpweb-init"
+            description="Build client css using CSBuilder">
+      <macrodef name="csbuilder">
+        <attribute name="csbuilderConfig" />
+        <sequential>
+          <java classname="${csbuilder.class}" fork="true" failonerror="true">
+            <arg value="-c" />
+            <arg value="${env.DMDIR}/webclient/rpweb/config/csbuilder/@{csbuilderConfig}.xml" />
+            <arg value="-t" />
+            <arg value="all" />
+            <classpath refid="rpweb.class.path" />
+          </java>
+        </sequential>
+      </macrodef>
+
+      <csbuilder csbuilderConfig="css" />
+    </target>
+
+    <target name="rpweb-compile" depends="development" />
+
+    <target name="rpweb-tests"
+            description="DEPRECATED: Use 'rpweb-compile-mod-testing'"
+            depends="rpweb-compile-mod-testing">
+        <echo></echo>
+        <echo>******************************************************************************************</echo>
+        <echo>* !!!                    'RPWEB-TESTS' TARGET IS DEPRECATED                              *</echo>
+        <echo>* !!!    PLEASE UPDATE YOUR SCRIPTS TO USE THE 'RPWEB-COMPILE-MOD-TESTING' TARGET    !!! *</echo>
+        <echo>******************************************************************************************</echo>
+        <echo></echo>
+    </target>
+
+    <!-- Clean or delete all the build output files before re deploying-->
+    <target name="rpweb-clean-refs"
+            description="clean up">
+        <!-- Delete the ${build} directory tree. This could be in the root dir or
+             webclient/rpweb dir depending on where rpweb was built. -->
+        <delete dir="${env.DMDIR}/webclient/versions"/>
+        <delete dir="${refs.deploy.dir}/web/dm"/>
+        <delete dir="${refs.deploy.dir}/deploy/dm"/>
+
+        <delete failonerror="false">
+            <fileset dir="${refs.deploy.dir}/deploy/messages/" includes="**/dm*.xml"/>
+        </delete>
+        <delete dir="${refs.deploy.dir}/${env.EXTERNALLIBCONFIGREL}/${application}"/>
+        <delete dir="${refs.deploy.dir}/${env.EXTERNALLIBREL}/${application}"/>
+        <delete failonerror="false">
+            <fileset dir="${refs.deploy.dir}/web/refs/modules/" includes="**/dm*.js"/>
+        </delete>
+        <delete failonerror="false">
+            <fileset dir="${refs.deploy.dir}/web/refs/localePacks/" includes="**/dm*.js"/>
+        </delete>
+        <delete dir="${refs.deploy.dir}/web/${application}/"/>
+    </target>
+
+    <target name="setVersionProperties">
+        <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${env.DMDIR}/3rdparty/ant-contrib/ant-contrib-1.0b3.jar" />
+        <loadfile property="taggedVersion" srcFile="${env.DMDIR}/config/TaggedVersion"/>
+        <propertyregex property="currentVersion" input="${taggedVersion}" regexp="([0-9]+.[0-9]+.[0-9]+).[0-9]+" select="\1" />
+        <propertyregex property="hotfixNumber" input="${taggedVersion}" regexp="[0-9]+.[0-9]+.[0-9]+.([0-9]+)" select="\1" />
+
+        <!-- Refs doesn't pick up versioned files unless they are 3 characters
+             long. If TaggedVersion contains 8.3.1.0a2, then hotfixNumber (see
+             above) would be '0'; it needs to be left padded with zeros. -->
+        <script language="javascript">
+            <![CDATA[
+              var pad ="000",
+                  hotfixNumber = project.getProperty("hotfixNumber") + "";
+              project.setProperty("buildNumber", pad.substring(0, pad.length - hotfixNumber.length) + hotfixNumber);
+            ]]>
+        </script>
+
+        <echo>
+             Tagged Version: ${taggedVersion}
+            Current Version: ${currentVersion}
+              Hotfix Number: ${hotfixNumber}
+               Build Number: ${buildNumber}
+        </echo>
+    </target>
+
+    <!-- Does a dev build that is deployed directly to REFS -->
+    <target name="development" depends="setVersionProperties" description="Default build of the DM web client.">
+        <property name="dir" value="${project-dir}/config/csbuilder" />
+        <antcall target="build">
+            <param name="buildType" value="development" />
+            <param name="outputDir" value="${versions}/${currentVersion}" />
+        </antcall>
+    <!-- Run JSUnit compiling and ESLint for DEV Setup only -->
+
+    <!-- Compile the testing code  -->
+        <antcall target="rpweb-tests">
+            <param name="buildType" value="development" />
+            <param name="outputDir" value="${versions}/${currentVersion}" />
+        </antcall>
+
+    <!-- Deploy the library files --> 
+        <antcall target="deploy" />
+        <antcall target="rpweb-eslint" />
+    </target>
+
+    <!-- Does an official build that is created in EMS and then deployed to REFS -->
+    <target name="official" depends="setVersionProperties" description="Offical versioned build of the DM web client.">
+        <antcall target="build">
+            <param name="buildType" value="official" />
+            <param name="outputDir" value="${versions}/${currentVersion}" />
+            <param name="buildNumber" value="${buildNumber}" />
+        </antcall>
+        <antcall target="deploy" />
+    </target>
+
+    <target name="build">
+        <property name="dir" value="${project-dir}/config/csbuilder" />
+        <echo>
+         Target build: DM
+                  dir: ${dir}
+            outputDir: ${outputDir}
+            buildType: ${buildType}
+          buildNumber: ${buildNumber}
+        </echo>
+        <csbuilder-macrodef
+            configFile="${dir}/overrides.xml"
+            outputDir="${outputDir}"
+            buildType="${buildType}"
+            buildNumber="${buildNumber}" />
+        <csbuilder-macrodef
+            configFile="${dir}/common.xml"
+            outputDir="${outputDir}"
+            buildType="${buildType}"
+            buildNumber="${buildNumber}" />     
+        <csbuilder-macrodef
+            configFile="${dir}/css.xml"
+            outputDir="${outputDir}"
+            buildType="${buildType}"
+            buildNumber="${buildNumber}" />
+            
+          <csbuilder-macrodef configFile="${dir}/copy.xml" />
+          <csbuilder-macrodef configFile="${dir}/messages.xml" />
+          <csbuilder-macrodef configFile="${dir}/menuMigration.xml" />
+        <csbuilder-macrodef
+            configfile="${dir}/pages/app.xml"
+            outputDir="${outputDir}"
+            buildType="${buildType}"
+            buildNumber="${buildNumber}" />
+    </target>
+
+    <target name="deploy">
+        <copy todir="${refs.deploy.dir}/${env.EXTERNALLIBCONFIGREL}/${application}" overwrite="true">
+            <fileset dir="${libConfigs}"/>
+        </copy>
+        <copy todir="${refs.deploy.dir}/${env.EXTERNALLIBREL}/${application}" >
+            <fileset dir="${versions}"/>
+        </copy>
+    </target>
+
+    <!-- DM-specific RPWEB documentation target -->
+    <target name="rpweb-doc" description="Generate DM-specific RPWEB documentation">
+        <delete dir="${env.REFSDIR}/docs/jsduck/dm" />
+        <mkdir dir="${env.REFSDIR}/docs/jsduck/dm" />
+
+        <exec executable="${env.REFSDIR}/tools/jsduck/jsduck.exe">
+            <arg value="--builtin-classes" />
+            <arg value="--config" />
+            <arg value="${env.DMDIR}/webclient/rpweb/js" />
+            <arg value="--output" />
+            <arg value="${env.REFSDIR}/docs/jsduck/dm" />
+        </exec>
+    </target>
+
+     <target name="rpweb-clean" description="clean up" depends="rpweb-clean-dm, rpweb-clean-refs" />
+
+    <target name="rpweb-clean-dm" description="clean up">
+        <!-- Delete the ${build} directory tree. This could be in the root dir or
+             webclient/rpweb dir depending on where rpweb was built. -->
+
+    </target>
+
+    
+    <target name="rpweb-all" description="clean and build">
+    <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${env.DMDIR}/3rdparty/ant-contrib/ant-contrib-1.0b3.jar" />
+        <if>
+            <available file="${env.REFSDIR}" type="dir"/>
+        <then>
+            <antcall target="rpweb-clean"></antcall>
+            <antcall target="development"></antcall>
+        </then>
+        <else>
+           <echo message=" REFS directory doesn't exist " />
+        </else>
+        </if>
+    </target>
+
+    <target name="copyrefsconfiguration" description="Copy rpweb xml">
+        <copy file="rpweb.xml" todir="${env.REFSDIR}/settings"/>
+    </target>
+
+    <target name="buildarchive" description="Create build archive">
+        <copy todir="${env.REFSDIR}/build/packaging/deploy/dm">
+            <fileset dir="${env.REFSDIR}/deploy/dm"/>
+        </copy>
+        <zip destfile="package.zip" basedir="${env.REFSDIR}/build/packaging" />
+    </target>
+    
+     <target name="copytomvntarget" description="Copy to mvn target">
+        <copy file="package.zip" todir="${env.MVNDIR}/target"/>
+    </target>
+    
+</project>

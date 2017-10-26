@@ -1,0 +1,32 @@
+entity: MenuItem
+version: '1.0'
+data:
+-   menuItemId: dm
+    sortOrder: 999
+    ignored: false
+    menuItems:
+        -   menuItemId: IntegrationDashboard
+            page: IntegrationDashboard
+            sortOrder: 10
+            ignored: false
+            menuItems: []
+        -   menuItemId: MessageDetails
+            page: MessageDetails
+            sortOrder: 11
+            ignored: false
+            menuItems: []
+        # -   menuItemId: BusinessRules
+        #     page: BusinessRules
+        #     sortOrder: 12
+        #     ignored: false
+        #     menuItems: []
+        # -   menuItemId: DashBoard
+        #     page: DashBoard
+        #     sortOrder: 13
+        #     ignored: false
+        #     menuItems: []
+        # -   menuItemId: Testing
+        #     page: Testing
+        #     sortOrder: 14
+        #     ignored: false
+        #     menuItems: []

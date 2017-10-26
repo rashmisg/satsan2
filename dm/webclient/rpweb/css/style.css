@@ -1,0 +1,179 @@
+.panel-footer .panel-custom {
+    color: white;
+}
+
+.x-column-header-text {
+    font-weight: inherit;
+}
+
+.selectFilter_messageStore {
+    float: right;
+}
+  
+.tbar-align-below {
+    table-layout: vertical;
+}
+ 
+.x-tree-noicon{
+	display : none;
+	/*background-image:url('ext/resources/images/default/s.gif') !important;*/
+	
+}
+
+.multiline{
+	 white-space: normal; 
+}
+
+.x-grid-with-row-lines .x-grid-cell .x-grid-cell-inner{
+	white-space: normal;
+}
+.x-tab-wrap{
+	padding-top:0%;
+	background-color:#d7e4ea; 
+}
+
+.chart-padding{
+	padding-left: 40px !important;
+}
+
+.x-column-header-inner .x-column-header-text {
+    white-space: normal;
+}
+
+.x-column-header {
+	background-color: #EDF4F7;
+}
+
+.x-form-trigger-input-cell .x-form-text {
+	color: #0079B6;
+}
+
+.custom-column{
+	background-color: #e0e0e0; 
+}
+/*#TabPanel-body{ 
+    top : 58px !important;
+}*/
+#TabpanelParent{
+	border-style : none;
+}
+.x-tab-bar .x-tab{
+	height : 51px !important;
+	width : 186px !important;
+	border-style :  hidden;
+	padding: 0px 0px 0 0px;
+	/*background: rgb(237, 244, 247);*/
+}
+.x-tab-bar-body-top{
+	height : 50px !important;
+	background-color: #D7E4EA;
+}
+#TabpanelParent-outerCt{
+background : rgb(237, 244, 247);
+padding : 8px;
+}
+#TabpanelParent-body{
+	padding-left : 10px;
+	border-style: hidden;
+font-family: 'Roboto Medium', 'Roboto Regular', 'Roboto';
+}
+.x-tab-bar .x-tab.x-tab-active {
+    background-color: #D7E4EA !important;
+}
+.x-boundlist-item {
+	color:#0079B6;
+}
+#integrationtoolbar{
+	border-style : none;
+	background : #d7e4ea;
+	font-family: Robato;
+}
+
+.custom-column {
+    background-color: rgb(166, 209, 230) !important;
+}
+
+.x-tab-bar .x-tab.x-tab-active .x-tab-inner {
+    fill :rgb(0, 122, 180) !important;
+    max-height: 46px;
+    border-bottom: 4px solid #007ab4;
+}
+
+.x-field-toolbar .x-form-trigger {
+	color:#0079B6;
+}
+
+.x-grid-view .x-grid-row-selected .x-grid-td {
+  background-color: #a4caf4;
+  border-bottom: 1px solid #222323;
+  color: white;
+  text-shadow: 0 0px 0px black; }
+
+  .button-highlight {
+  	background-color: #007AB4;
+  	background-image: none !important;
+  	padding-top: 4px;
+  }
+#ErrorPanelP-body{
+   /* height: auto !important;*/
+    width:auto !important;
+   /* min-height: 500px !important;*/
+}
+
+#ProcessedPanel-body{
+	/*height: auto !important;*/
+    width:auto !important;
+   /* min-height: 500px !important;*/
+}
+
+.PanelCls{
+	width: auto !important;
+	min-width: 6000px !important;
+}
+.Panel2HrsCls{
+	width: 4100px !important;
+}
+.Panel12HrsCls{
+	width: 1250px !important;
+	
+}
+.Panel720HrsCls{
+	width: 2650px !important;
+	
+}
+.Panel4HrsCls{
+	width: 700px !important;
+	
+}
+.errorChartWidthCls{
+	width:3000px !important;
+}
+#DashBoardGridPanel-body .x-grid-view{
+	overflow:hidden !important;
+	width:auto !important;
+}
+#DashBoardProcessedGridPanel-body .x-grid-view{
+	overflow:hidden !important;
+	width:auto !important;
+}
+#DashBoardGridPanel-body .x-grid-table{
+	min-height: 32px;
+    height: inherit;
+}
+#DashBoardProcessedGridPanel-body .x-grid-table{
+	min-height: 32px;
+    height: inherit;
+}
+
+.x-grid-row-alt .x-grid-td {
+  background-color: #EDF4F7;
+}
+
+/*Fix for loading indicator not hiding when navigated to message details from left nav */
+.x-css-shadow{
+	box-shadow: rgba(0, 0, 0, 0) 0px 0px 6px !important;
+}
+
+.x-mask-msg .x-mask-msg-text {
+	visibility: hidden;
+}

@@ -1,0 +1,26 @@
+entity: ResourceBundle
+version: '1.0'
+data:
+
+- bundleId: dataManagement
+  localizationNamespaces:
+  - dm*
+  libraries:
+  - name: rpcommon
+    version: 9.0.MAX
+  scripts:
+  - dm/MessageStoreMain.{client-mode}.js
+  css:
+  - dm/Common-css.min.css
+- bundleId: testDataManagement
+  localizationNamespaces:
+  - dm*
+  libraries:
+  - name: rpcommon
+    version: 9.0.MAX
+  - name: csunit
+    version: 3.0.MAX
+  scripts:
+  - dm/MessageStoreMain.{client-mode}.js
+  css:
+  - dm/Common-css.min.css

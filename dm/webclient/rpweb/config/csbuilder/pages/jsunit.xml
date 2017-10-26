@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project application="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         css-dir="${project-dir}/css"
+         js-dir="${project-dir}/js"
+         deploy-dir="deploy/${application}"
+         config-dir="${project-dir}/config"
+         source="True">
+
+    <target name="DM.pages.testing.JSUnit"
+            source-dir="${js-dir}/pages/testing/jsunit/"
+            type="js"
+            target-dir="${outputDir}"
+            src="true"
+            debug="true">
+
+          <!-- models -->
+
+          <!-- stores -->
+
+          <!-- views -->
+          <include name="view/Main.js" />
+
+          <!-- view components -->
+          <!-- <include name="Frame.js" /> -->
+
+          <!-- controllers -->
+          <include name="controller/Testing.js"/>
+          <include name="App.js" />
+
+    </target>
+</project>

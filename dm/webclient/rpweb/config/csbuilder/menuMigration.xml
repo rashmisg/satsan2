@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project app-id="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+		 hf-compliant="true"
+         source="True">
+
+    <target type="load"
+            source-dir="${DMDIR}/webclient/rpweb/db/load/dm">
+        <include name="bundles" />
+    </target>
+    <target type="load"
+            source-dir="${DMDIR}/webclient/rpweb/db/load/dm">
+        <include name="menus" />
+    </target>
+    <target type="load"
+            source-dir="${DMDIR}/webclient/rpweb/db/load/dm">
+        <include name="pages" />
+    </target>
+    <!-- <target type="load"
+            source-dir="${DMDIR}/webclient/rpweb/db/load/lm">
+        <include name="messages" />
+    </target> -->
+    
+    <!-- <target type="load"
+            source-dir="${DMDIR}/webclient/rpweb/db/load/filtering">
+        <include name="columns" />
+    </target> -->
+
+</project>
+
+

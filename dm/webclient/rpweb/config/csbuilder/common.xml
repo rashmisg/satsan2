@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project app-id="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         js-dir="${project-dir}/js"
+         output-dir="${outputDir}"
+         source="True">
+
+    <!-- LM Client Source Targets -->
+    <target name="DM.common"
+            type="js"
+            source-dir="${js-dir}/"
+            target-dir="${output-dir}"
+            src="true"
+            debug="true">
+            
+            <!-- UI -->
+            <!-- <include name="ui/view/CardDeck.js" />
+            <include name="ui/view/Templates.js" />
+            <include name="ui/view/FormView.js" />  
+            <include name="ui/grid/column/HeaderUpdateColumn.js" />
+			<include name="ui/grid/column/CustomHeaderUpdateColumn.js" />
+            <include name="ui/grid/column/HeaderWithImageColumn.js" /> -->
+
+            <!-- UTILS -->
+            <include name="Utils/Constants.js" />
+            <include name="Utils/DataService.js" />
+            <!-- <include name="util/Renderers.js" />
+            <include name="util/actions/LaborDashboardActions.js"/> -->
+            
+
+    </target>
+</project>

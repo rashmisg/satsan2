@@ -1,0 +1,26 @@
+{
+    name: "wm-common",
+    version: "2017.1",
+    config: {
+        allowSourceMode: true,
+        path: "external-libs/wm/2017.1.{DROP}",
+        dependencies: [{
+            name: 'mcs-component',
+            version: '2017.1.MAX.MAX'
+        }, {
+            name: 'wm-thirdparty',
+            version: '2017.1.MAX.MAX'
+        }],
+        files: [{
+            type: "inline",
+            code: "// Intentionally empty inline script - This file should *ONLY* contain the global script."
+        }, {
+            type: "js",
+            reps: {
+                min: "{PATH}/WM.Global.min{BUILD}.js",
+                debug: "{PATH}/WM.Global.debug{BUILD}.js",
+                src: "{PATH}/WM.Global.src.js"
+            }
+        }]
+    }
+}

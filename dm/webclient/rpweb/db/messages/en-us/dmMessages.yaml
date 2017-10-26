@@ -1,0 +1,278 @@
+entity: Message
+version: '1.0'
+data:
+    - locale: en-us
+      namespace: refs.menus.items.titles
+      messages:
+
+      - name: dm
+        text: 'Data Management'
+      - name: MessageDetails
+        text: 'Message Details'
+      - name: IntegrationDashboard
+        text: 'Integration Dashboard'
+      - name: Testing
+        text: 'Testing'
+      # - name: BusinessRules
+      #   text: 'Business Rules'
+      # - name: DashBoard
+      #   text: 'Data Feed Summary'
+      
+
+    # - locale: en-us
+    #   namespace: dm.BusinessRules.messages
+    #   messages:
+
+    #   - name: inactive
+    #     text: 'In-Active'
+    #   - name: active
+    #     text: 'Active'
+    #   - name: service
+    #     text: 'Service'
+    #   - name: status
+    #     text: 'Status'
+    #   - name: document
+    #     text: 'Document'
+    #   - name: rulename
+    #     text: 'Rule Name'
+    #   - name: managesequence
+    #     text: 'Manage Sequence'
+    #   - name: edit
+    #     text: 'Edit'
+    #   - name: delete
+    #     text: 'Delete'
+    #   - name: search
+    #     text: 'Search'
+    #   - name: clear
+    #     text: 'Clear'
+    #   - name: searchresults
+    #     text: 'Search Results'
+    #   - name: update
+    #     text: 'Update'
+    #   - name: filter
+    #     text: 'Filter'
+    #   - name: validate
+    #     text: 'Validation'
+    #   - name: type
+    #     text: 'Type'
+    #   - name: table
+    #     text: 'Table'
+    #   - name: invalidEffectivePeriod
+    #     text: 'Invalid effectivePeriod'
+    #   - name: selectEffectivePeriod
+    #     text: 'Please select effectivePeriod'
+    #   - name: tryAgain
+    #     text: 'Please Try Again'
+    #   - name: postFailed
+    #     text: 'Post failed'
+    #   - name: requestFailed
+    #     text: 'Request failed'
+    #   - name: deleteFailed
+    #     text: 'Delete failed'
+    #   - name: confirmDelete
+    #     text: 'Confirm Delete'
+    #   - name: confirmDeleteMessage
+    #     text: 'Are you sure you want to delete '
+    #   - name: confirmEdit
+    #     text: 'Confirm Update'
+    #   - name: confirmEditMessage
+    #     text: 'Are you sure you want to update '
+    #   - name: success
+    #     text: 'Success'
+    #   - name: updateSuccess
+    #     text: 'Rule updated successfully'
+    #   - name: deleteSuccess
+    #     text: 'Rule deleted successfully'
+    #   - name: addSuccess
+    #     text: 'Rule added successfully'
+    
+    - locale: en-us
+      namespace: dm.MessageStore.messages
+      messages:
+      
+      - name: documentId
+        text: 'Document Id'
+      - name: camelExchangeId
+        text: 'Camel Exchange Id'
+      - name: formatType
+        text: 'Format Type'
+      - name: formatVersion
+        text: 'Format Version'
+      - name: createdDate
+        text: 'Created Date'
+      - name: componentName
+        text: 'Adapter'
+      - name: componentId
+        text: 'Component Id'
+      - name: componentVersion
+        text: 'Component Version'
+      - name: operation
+        text: 'Message Type'
+      - name: hostName
+        text: 'Host Name'
+      - name: endPoint
+        text: 'Endpoint'
+      - name: direction
+        text: 'Direction'
+      - name: side
+        text: 'Side'
+      - name: senderId
+        text: 'Sender Id'
+      - name: receiverId
+        text: 'Receiver Id'
+      - name: messageId
+        text: 'Message Id'
+      - name: currentStatus
+        text: 'Current Status'
+      - name: errorMessage
+        text: 'Error Message'
+      - name: statusEvents
+        text: 'Status Events'
+      - name: message
+        text: 'Message'
+      - name: downloadMessage
+        text: 'Download Message'
+      - name: error
+        text: 'Error'
+      - name: operationNotSupported
+        text: 'Operation not supported'
+      - name: networkErrorTryLater
+        text: 'Network error: Please try after some time'
+      - name: alert
+        text: 'Alert'
+      - name: noRecordsExists
+        text: 'No records exits'
+      - name: process
+        text: 'Process'
+      - name: download
+        text: 'Download'
+      - name: view
+        text: 'View'
+      - name: backToDashBoard
+        text: 'Back To DashBoard'
+      - name: noRecordsFound
+        text: 'No Records Found'
+
+    - locale: en-us
+      namespace: dm.DashBoard.messages
+      messages:      
+      - name: apply
+        text: 'Apply'
+      - name: targetSystem
+        text: 'Target System'
+      - name: processed
+        text: 'Processed'
+      - name: received
+        text: 'Received'
+      - name: error
+        text: 'Error'
+      - name: total
+        text: 'Total'
+      - name: lastDay
+        text: 'Last Day'
+      - name: last2Days
+        text: 'Last 2 Days'
+      - name: last3Days
+        text: 'Last 3 Days'
+      - name: last4Hours
+        text: 'Last 4 Hours'
+      - name: last12Hours
+        text: 'Last 12 Hours'
+      - name: lastWeek
+        text: 'Last Week'
+      - name: lastMonth
+        text: 'Last Month'
+      - name: period
+        text: 'PERIOD'
+      - name: messageType
+        text: 'MESSAGE TYPE'
+      - name: application
+        text: 'APPLICATION'
+      - name: displayBy
+        text: 'DISPLAY BY'
+      - name: groupBy
+        text: 'GROUP BY'
+
+    - locale: en-us
+      namespace: rp.filtering.columns.IntegrationDashboard
+      messages:
+        - name: DocumentId
+          text: 'Document Id'
+        - name: CamelExchangeId
+          text: 'Camel Exchange Id'
+        - name: FormatType
+          text: 'Format Type'
+        - name: FormatVer
+          text: 'Format Version'
+        - name: CreatedTimestamp
+          text: 'Created Date'
+        - name: ComponentName
+          text: 'Adapter'
+        - name: ComponentId
+          text: 'Component Id'
+        - name: ComponentVer
+          text: 'Component Version'
+        - name: OperationName
+          text: 'Message Type'
+        - name: Hostname
+          text: 'Host Name'
+        - name: Endpoint
+          text: 'Endpoint'
+        - name: Direction
+          text: 'Direction'
+        - name: Side
+          text: 'Side'
+        - name: SenderId
+          text: 'Sender Id'
+        - name: ReceiverId
+          text: 'Receiver Id'
+        - name: CurrentStatus
+          text: 'Current Status'
+        - name: ErrorMessage
+          text: 'Error Message'
+        - name: Message
+          text: 'Message'
+        - name: id
+          text: 'Message Id'
+
+    - locale: en-us
+      namespace: rp.filtering.columns.MessageDetails
+      messages:
+        - name: DocumentId
+          text: 'Document Id'
+        - name: CamelExchangeId
+          text: 'Camel Exchange Id'
+        - name: FormatType
+          text: 'Format Type'
+        - name: FormatVer
+          text: 'Format Version'
+        - name: CreatedTimestamp
+          text: 'Created Date'
+        - name: ComponentName
+          text: 'Adapter'
+        - name: ComponentId
+          text: 'Component Id'
+        - name: ComponentVer
+          text: 'Component Version'
+        - name: OperationName
+          text: 'Message Type'
+        - name: Hostname
+          text: 'Host Name'
+        - name: Endpoint
+          text: 'Endpoint'
+        - name: Direction
+          text: 'Direction'
+        - name: Side
+          text: 'Side'
+        - name: SenderId
+          text: 'Sender Id'
+        - name: ReceiverId
+          text: 'Receiver Id'
+        - name: CurrentStatus
+          text: 'Current Status'
+        - name: ErrorMessage
+          text: 'Error Message'
+        - name: Message
+          text: 'Message'
+        - name: id
+          text: 'Message Id'

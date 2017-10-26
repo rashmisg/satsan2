@@ -1,0 +1,73 @@
+<config>
+  <server>
+    <authenticationSiteName>server</authenticationSiteName>
+    <port>23456</port>
+    <stashURL>http://localhost:23456/stash</stashURL>
+    <staticURL>http://localhost:23456/web</staticURL>
+    <type>development</type>
+  </server>
+
+  <loginLocales>
+    <locale>
+      <isoName>en-us</isoName>
+      <displayName>English (United States)</displayName>
+    </locale>
+  </loginLocales>
+
+  <client>
+    <pageTitle>RPWEB</pageTitle>
+    <clientMode>src</clientMode>
+    <stash-clientMode>src</stash-clientMode><!-- Source for lib which refs support-->
+    
+  <!--
+        JSCover is an instrumentation tool used to measure the amount of code that is covered during a set of actions.  The main use case for this is for measuring the amount of code that is and isn't executed during the execution
+        of automated tests.  This setting is used to turn this functionality on.
+      -->
+      <instrumenter>
+
+          <enable>true</enable>
+
+          <!--
+            reportDir is used to specify the location the JSCover report will be stored.  By default the report will be
+            stored $REFSDIR/jscoverReport
+          --><!--
+
+          <reportDir>/var/log/jsCoverReports</reportDir>-->
+
+          <!--
+            include is a setting that enables instrumentation of files that match the given regex.
+            Files that do not match this regex are disabled
+          -->
+
+          <include>
+            .*/webclient/rpweb/js/MessageStore/.*
+          </include>
+
+          <!--
+            exclude is a setting that disables instrumentation of files that match the given regex.
+          -->
+
+          <exclude>
+            web/refs/.*
+            .*/webclient/rpweb/js/MessageStore/view/.*
+          </exclude>
+
+      </instrumenter>
+      
+  </client>
+
+  <db>
+    <type>H2</type>
+    <jdbcUrl>jdbc:h2:mem:refsdb;DB_CLOSE_DELAY=-1</jdbcUrl>
+    <autopilot>true</autopilot>
+  </db>
+
+  <connections>
+    <connect>
+      <server>
+      <application>connect</application>
+      <address>http://in2npdvintmt02:8181</address>
+      </server>
+    </connect>
+  </connections>
+</config>

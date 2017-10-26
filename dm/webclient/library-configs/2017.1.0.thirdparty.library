@@ -1,0 +1,17 @@
+{
+    name: "wm-thirdparty",
+    version: "2017.1",
+    config: {
+        allowSourceMode: true,
+        path: "external-libs/wm-thirdparty/2017.1.{DROP}",
+        files: [{
+            type: "js",
+            async: true,
+            reps: {
+                min: "{PATH}/WM.ThirdParty.MomentJs.min{BUILD}.js",
+                debug: "{PATH}/WM.ThirdParty.MomentJs.debug{BUILD}.js",
+                src: "{PATH}/WM.ThirdParty.MomentJs.debug{BUILD}.js"
+            }
+        }]
+    }
+}

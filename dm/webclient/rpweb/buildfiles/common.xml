@@ -1,0 +1,17 @@
+<project name="DM RPWEB Deployment-Common">
+
+    <description>
+        This buildfile is used define common properties used in the DM web client
+        build process.
+    </description>
+
+    <property environment="env" />
+
+	<property name="build-properties-file" location="${env.DMDIR}/webclient/rpweb/build/build.properties" />
+    <property name="dm-js" location="${env.DMDIR}/webclient/rpweb/js" />
+    <property name="application" value="dm" />
+	<property name="libConfigs" location="${env.DMDIR}/webclient/library-configs" />
+    <property name="versions" location="${env.DMDIR}/webclient/versions" />
+    <property name="project-dir" value="${env.DMDIR}/webclient/rpweb" />
+
+</project>

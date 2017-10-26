@@ -1,0 +1,19 @@
+entity: ResourceBundle
+version: '1.0'
+data:
+- bundleId: testDataManagement
+  localizationNamespaces:
+  - dm*
+  libraries:
+  - name: rpcommon
+    version: 9.0.MAX
+  - name: csunit
+    version: 3.0.MAX
+  scripts:
+  - dm/messageStoreMain.{client-mode}.js
+  - '{STASH}/external-libs/dm/9.1.{MAX}/DM.pages.testing.JSUnit.{client-mode}{MAX}.js'
+  - 'dm/js/tests/DM.Tests.{client-mode}.js'
+  css:
+  - dm/Common-css.min.css
+
+

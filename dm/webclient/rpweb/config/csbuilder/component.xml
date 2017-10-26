@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project app-id="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         js-dir="${project-dir}/js"
+         output-dir="${outputDir}"
+         source="True">
+
+    <!-- DM Client Source Targets -->
+    <target name="DM.Component"
+            source-dir="${js-dir}/"
+            target-dir="${output-dir}"
+            file="${target-dir}/${name}.min.js"
+            src="true"
+            src-file="${target-dir}/${name}.src.js"
+            debug="true"
+            debug-file="${target-dir}/${name}.debug.js">
+            
+        <!-- <include name="component/Header.js" />
+        <include name="component/FooterBar.js" /> -->
+    </target>
+</project>

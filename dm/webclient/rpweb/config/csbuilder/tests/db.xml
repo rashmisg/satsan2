@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project app-id="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         hf-compliant="true">
+
+    <!-- Deploys the contents of {project-dir}/db/load/tests to
+         %REFSDEPLOYDIR%/deploy/wm/db/load/ -->
+    <target name="DM.TestsDataLoad"
+            type="load"
+            source-dir="${project-dir}/db/load">
+        <include name="tests/taskflows" />
+    </target>
+
+</project>

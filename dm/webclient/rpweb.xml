@@ -1,0 +1,30 @@
+<config>
+  <server>
+    <authenticationSiteName>server</authenticationSiteName>
+    <port>$PORTAL_SERVER_PORT_1$</port>
+    <stashURL>$STASH_URL$</stashURL>
+    <staticURL>$STATIC_URL$</staticURL>
+    <type>production</type>
+  </server>
+
+  <loginLocales>
+    <locale>
+      <isoName>en-us</isoName>
+      <displayName>English (United States)</displayName>
+    </locale>
+  </loginLocales>
+
+  <client>
+    <pageTitle>RPWEB</pageTitle>
+    <clientMode>min</clientMode>
+    <stash-clientMode>min</stash-clientMode>
+  </client>
+
+  <connections>
+    <connect>
+      <server>
+      <application>connect</application>
+      <address>$ADAPTER_URL_1$</address>
+      </server>
+    </connect>
+  </connections>

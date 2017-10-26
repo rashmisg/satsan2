@@ -1,0 +1,54 @@
+<project name="LM RPWEB Deployment-TestingApp">
+
+    <description>
+        This buildfile is used to build the Testing Application used for DM web client
+        development and CI execution.  This contains all 'Testing Application'-related
+        build targets:
+            - DB
+            - Taskflow
+            - Module
+            - Tests
+            - Targets for running headless tests via command line
+
+        There is no 'library' target since the Testing Application does not have its own
+        library definition.
+    </description>
+
+    <property environment="env" />
+
+    <import file="${env.REFSDIR}/buildfiles/client.xml" />
+    <import file="${env.DMDIR}/webclient/rpweb/buildfiles/common.xml" />
+    <import file="${env.DMDIR}/webclient/rpweb/buildfiles/version.xml" />
+    <property name="project-dir" value="${env.DMDIR}/webclient/rpweb" />
+
+    <!-- ==================================================================== -->
+    <!--   JSUNIT                                                             -->
+    <!-- ==================================================================== -->
+
+    <target name="rpweb-db-testing"
+            depends="setVersionProperties"
+            description="Deploys the DB files related to the Testing App">
+        <property name="dir" value="${project-dir}/config/csbuilder" />
+        <csbuilder-macrodef configFile="${dir}/testing.xml" />
+    </target>
+    <target name="rpweb-compile-pages-jsunit"
+            depends="setVersionProperties"
+            description="Compiles the JSUnit  Testing App">
+        <csbuilder-macrodef configfile="${project-dir}/config/csbuilder/pages/jsunit.xml"
+                            outputDir="${outputDir}"
+                            buildType="${buildType}"/>
+    </target>
+    <target name="rpweb-compile-jsunit-tests"
+            depends="setVersionProperties"
+            description="Compiles the JSUnit tests to be executed by the Testing App">
+        <property name="dir" value="${project-dir}/config/csbuilder" />
+        <copy file="${env.DMDIR}/webclient/rpweb/tests/Tests.htm"
+              tofile="${refs.deploy.dir}/web/dm/js/tests/Tests.htm"/>
+        <csbuilder-macrodef configfile="${dir}/tests/tests.xml" />
+    </target>
+    <target name="rpweb-compile-mod-testing"
+            depends="rpweb-db-testing,
+                     rpweb-compile-jsunit-tests,
+                     rpweb-compile-pages-jsunit"
+            description="Compiles all taskflows required for the Testing module" />
+</project>

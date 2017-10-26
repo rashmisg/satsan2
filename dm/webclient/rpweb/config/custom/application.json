@@ -1,0 +1,11 @@
+{"data":[
+            { "targetSystem": "All target systems"},
+            { "targetSystem": "Gs1RefAdapter"},
+            { "targetSystem": "TMAdapter"},
+            { "targetSystem": "WFMAdapter"},
+            { "targetSystem": "ScpoAdapter"}
+        ]
+}
+ 
+
+                  

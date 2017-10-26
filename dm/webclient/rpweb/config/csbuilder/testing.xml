@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project app-id="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         hf-compliant="true"
+         source="True">
+    <target type="load"
+            source-dir="${DMDIR}/webclient/rpweb/db/load/dm">
+        <include name="testing" />
+    </target>
+</project>

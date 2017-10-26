@@ -1,0 +1,108 @@
+<project project-dir="${DMDIR}/webclient/rpweb"
+         js-dir="${project-dir}/js"
+         app-id="dm"
+         css-dir="${project-dir}/css"
+         output-dir="${REFSDIR}/web/${app-id}"
+         hf-compliant="true">
+
+  <target name="MessageStoreMain"
+          type="js"
+          source-dir="${js-dir}">
+<!-- Libraries start -->
+      <!-- <include name="json/rule.json"/> -->
+      <include name="Utils/Constants.js" />
+      <include name="Utils/DataService.js" />
+<!-- Libraries end -->
+
+ <!--models start -->
+      <include name="MessageStore/model/MessageStoreSummaryModel.js" />
+      <include name="MessageStore/model/FilterComboModel.js" />
+      <!-- <include name="BusinessRules/model/RuleDetailsModel.js" /> -->
+      <!-- <include name="BusinessRules/model/BusinessRulesSummaryModel.js" /> -->
+      <!-- <include name="BusinessRules/model/ComboModel.js" /> -->
+<!-- models end -->
+
+<!-- Stores start -->
+     <!--  <include name="BusinessRules/store/StatusComboStore.js" /> -->
+     <!--  <include name="BusinessRules/store/RuleTypeComboStore.js" /> -->
+      <include name="MessageStore/store/MessageStoreFilter.js" />
+<!-- Stores end -->
+
+<!-- Views start -->
+     <!--  <include name="BusinessRules/view/RuleDetails.js" /> -->
+     <!--  <include name="BusinessRules/view/RuleDetailsPanel.js" /> -->
+     <!--  <include name="BusinessRules/view/BusinessRulesSummary.js" /> -->
+      <include name="MessageStore/view/MessageStoreSummary.js" />
+<!-- Views end -->
+
+<!-- controllers start -->
+     <!--  <include name="BusinessRules/controller/RuleDetailsPanelController.js" />
+      <include name="BusinessRules/controller/BusinessRulesSummaryController.js" /> -->
+      <include name="MessageStore/controller/MessageStoreSummaryController.js" />
+<!-- controllers end -->
+
+<!-- pages start -->
+    <!--   <include name="BusinessRules/BusinessRulesSummaryPage.js" />
+      <include name="BusinessRules/RuleDetailsPanelPage.js" /> -->
+      <include name="MessageStore/MessageStoreSummaryPage.js" />
+<!-- pages end -->
+
+  <!--Dashboard files -->
+      <!-- <include name="DashBoard/model/DashBoardSummaryModel.js" />
+      <include name="DashBoard/model/FilterTypeModel.js" />
+      <include name="DashBoard/store/FilterTypeStore.js" />
+      <include name="DashBoard/view/DashBoardSummary.js" />
+      <include name="DashBoard/view/SettingsView.js" />
+      <include name="DashBoard/controller/DashBoardSummaryController.js" />
+      <include name="DashBoard/DashBoardSummaryPage.js" /> -->
+  <!--Dashboard files end-->
+
+  <!--Integration Dashboard files -->
+      <include name="IntegrationDashboard/model/IntegrationDashboardModel.js" />
+      <include name="IntegrationDashboard/view/IntegrationDashboardView.js" />
+      <include name="IntegrationDashboard/controller/IntegrationDashboardController.js" />
+      <include name="IntegrationDashboard/IntegrationDashboardSummaryPage.js" />
+  <!--Integration Dashboard files end-->
+
+   <!--Message Details files -->
+      <include name="MessageDetails/model/MessageDetailsSummaryModel.js" />
+      <include name="MessageDetails/model/FilterComboModel.js" />
+      <include name="MessageDetails/view/MessageDetailsSummary.js" />
+      <include name="MessageDetails/store/MessageDetailsFilter.js" />
+      <include name="MessageDetails/controller/MessageDetailsSummaryController.js" />
+      <include name="MessageDetails/MessageDetailsSummaryPage.js" />
+
+  <!--Message Details end-->
+
+
+  <!--Testing files start -->
+      <include name="pages/testing/jsunit/view/Main.js" />
+      <include name="taskflow/App.js" />
+      <include name="pages/testing/jsunit/App.js" />
+      <include name="pages/testing/jsunit/controller/Testing.js" />
+    <!--Testing files end -->
+   <!--  <include name="../tests/BusinessRules/controller/TU_RuleDetailsPanelController.js" />
+      <include name="../tests/MessageStore/controller/TU_MessageStoreSummaryController.js" /> -->
+
+  <!--Testing files end-->
+
+  </target>
+
+  <target type="load"
+          source-dir="${project-dir}/db">
+      <include name="pages" />
+      <include name="messages" />
+      <include name="load/filtering/columns" />
+  </target>
+
+ <!--CSS Style Sheets -->
+  <target name="Common-css"
+      type="css"
+      source-dir="${css-dir}"
+      file="${output-dir}/css/Common.css"
+      debug="false"
+      src="false">
+      <include name="style.css" />
+  </target>
+
+</project>

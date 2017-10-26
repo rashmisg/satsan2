@@ -1,0 +1,12 @@
+entity: MenuItem
+version: '1.0'
+data:
+-   menuItemId: dm
+    sortOrder: 999
+    ignored: false
+    menuItems:
+        # -   menuItemId: Testing
+        #     page: Testing
+        #     sortOrder: 10
+        #     ignored: false
+        #     menuItems: []

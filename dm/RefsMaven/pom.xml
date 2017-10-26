@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.jda</groupId>
+	<artifactId>refs</artifactId>
+	<version>2017.2.0.0</version>
+	<packaging>jar</packaging>
+	<name>RefsUI</name>
+	<url>http://maven.apache.org</url>
+
+	<build>
+
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+		
+			<plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+            </plugin>
+
+			<!-- package properties, configurations into repository -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+						<configuration>
+							<artifacts>
+								<artifact>
+									<!-- Give the path to the zip file -->
+									<file>target/package.zip</file>
+									<type>zip</type>
+									<!-- you can leave this as it is or give some identifier -->
+									<classifier>Refsui_Package</classifier>
+
+								</artifact>
+							</artifacts>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+	<distributionManagement>
+		<repository>
+			<id>artifactory.jda.com</id>
+			<name>artifactory.jda.com-releases</name>
+			<!-- Artifactory URL -->
+			<url>http://artifactory.jda.com/artifactory/PHX</url>
+		</repository>
+	</distributionManagement>
+</project>

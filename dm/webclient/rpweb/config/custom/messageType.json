@@ -1,0 +1,10 @@
+{"data": [
+            { "messageType": "All message types"},
+            { "messageType": "Transfer Order"},
+            { "messageType": "Transport Load"},
+            { "messageType": "Transport Instruction"},
+            { "messageType": "Despatch Advice"},
+            { "messageType": "Labor Capacity Message"}
+        ]
+}
+                  

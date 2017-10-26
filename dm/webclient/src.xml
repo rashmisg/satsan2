@@ -1,0 +1,36 @@
+<project project-dir="." output-dir="${REFSDIR}/stash/Deploy/${version}">
+<target name="ext-theme"
+        type="css"
+        src="false"
+        source-dir="${project-dir}/css"
+        target-dir="${output-dir}">
+    <include name="ext-theme.css" />
+</target>
+
+
+<target name="jda-light-theme"
+        type="css"
+        src="false"
+        source-dir="${project-dir}/css"
+        target-dir="${output-dir}">
+    <include name="jda-light-theme.css" />
+    <include name="jda-resources.css" />
+</target>
+
+<target name="jda-dark-theme"
+        type="css"
+        src="false"
+        source-dir="${project-dir}/css"
+        target-dir="${output-dir}">
+    <include name="jda-dark-theme.css" />
+    <include name="jda-resources.css" />
+</target>
+
+<target name="rpcommon-print-css"
+        type="css"
+        src="false"
+        source-dir="${project-dir}/css/print"
+        target-dir="${output-dir}">
+    <include name="rp-print.css" />
+</target>
+</project>

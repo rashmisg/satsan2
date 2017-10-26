@@ -1,0 +1,28 @@
+{
+    name: "lm-supervisor",
+    version: "9.1.0",
+    config: {
+        allowSourceMode: true,
+        path: "external-libs/lm/9.1.{DROP}",
+        messageNamespaces: [
+            "lm.*"
+        ],
+		dependencies: [{
+            name: 'lm-common',
+            version: '9.1.MAX.MAX'
+        }],
+        files: [{
+            type: "css",
+            reps: {
+                min: "{PATH}/LM.common.min{BUILD}.css"
+            }
+        }, {
+            type: "js",
+            reps: {
+                min: "{PATH}/LM.pages.laborDashboard.min{BUILD}.js",
+                debug: "{PATH}/LM.pages.laborDashboard.debug{BUILD}.js",
+                src: "{PATH}/LM.pages.laborDashboard.src.js"
+            }
+        }]
+    }
+}

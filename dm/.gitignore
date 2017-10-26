@@ -1,0 +1,81 @@
+/.gradle/
+/build/
+/bin/
+/logs/
+/webclient/versions/*.*
+/*/build/
+/*/bin/
+/*/logs/
+/*/*/build/
+/*/*/bin/
+.gradle
+.checkstyle
+dist/*
+
+#
+# OS-X Finder Files
+#
+.DS_Store
+**/.DS_Store
+
+#
+# Eclipse files
+#
+.project
+**/.project
+.classpath
+**/.classpath
+.settings
+**/.settings
+
+#
+# IntelliJ IDEA Files
+#
+*.ipr
+*.iws
+atlassian-ide-plugin.xml
+.idea/*
+.idea/**/*
+*.iml
+**/*.iml
+out/*
+out/**/*
+
+#
+# VI Editor Files
+#
+*~
+**/*~
+*.swp
+**/*.swp
+
+#
+# Built Files.
+#
+build/*
+build/**/*
+**/build/*
+**/build/**/*
+bin
+
+#
+# Other
+#
+.gradle/*
+.gradle/**/*
+**/.gradle/*
+**/.gradle/**/*
+run
+test-log
+configure/tests/log4j.properties
+.SNAPSHOT
+dist/*
+!dist/empty.dir
+configure/tests
+temp
+ExternalFeatures/target
+**/version_counter.txt
+
+# Fitnesse
+*.zip
+**/RecentChanges/*

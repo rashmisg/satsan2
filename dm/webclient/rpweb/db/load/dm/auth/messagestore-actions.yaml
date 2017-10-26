@@ -1,0 +1,21 @@
+entity: FieldConfiguration
+version: '1.0'
+data:
+- extendId: 'process_button_extension'
+  extensionType:
+    name: 'button'
+  properties:
+  - name: visible
+    permissionLevel: ITEMIZED
+    permissions:
+    - name: 'SHIP_MANAGER'
+      type: ROLE
+- extendId: 'download_button_extension'
+  extensionType:
+    name: 'button'
+  properties:
+  - name: visible
+    permissionLevel: ITEMIZED
+    permissions:
+    - name: 'download_button_extension'
+      type: ROLE_OPTION

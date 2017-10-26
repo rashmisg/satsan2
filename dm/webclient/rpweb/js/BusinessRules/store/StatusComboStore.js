@@ -1,0 +1,12 @@
+Ext.define('JDA.dm.BusinessRules.store.StatusComboStore',{
+  extend:'Ext.data.Store',
+  id:'StatusCombo',
+  model:'JDA.dm.BusinessRules.model.ComboModel',
+   proxy:{
+    type:'memory'
+  },
+  data:[
+    {data:RP.getMessage('dm.BusinessRules.messages.active')},
+    {data:RP.getMessage('dm.BusinessRules.messages.inactive')}
+  ]
+});

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project application="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         js-dir="${project-dir}/js"
+         deploy-dir="deploy/${application}"
+         config-dir="${project-dir}/config">
+
+    <target name="DM.Overrides"
+            type="js"
+            target-dir="${outputDir}"
+            source-dir="${js-dir}/overrides"
+            source="true"
+            debug="true">
+
+        <!-- Overrides -->
+		<!-- <include name="/outboundplanner/dashboard/view/Main.js" /> -->
+    </target>
+</project>

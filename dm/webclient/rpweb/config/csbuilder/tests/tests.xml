@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project application="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         js-dir="${project-dir}/tests"
+         output-dir="${REFSDEPLOYDIR}/web/${application}/js/tests">
+
+    <target name="DM.Tests"
+            type="js"
+            target-dir="${output-dir}"
+            source-dir="${js-dir}/"
+            src="true"
+            debug="true">
+        <!-- Test files -->
+      <!-- <include name="BusinessRules/controller/TU_RuleDetailsPanelController.js" /> -->
+      <include name="MessageStore/controller/TU_MessageStoreSummaryController.js" />
+      <include name="MessageStore/store/TU_MessageStoreSummaryStore.js" />
+      <include name="MessageStore/TU_MessageStoreSummaryPage.js" />
+      <include name="IntegrationDashboard/store/TU_IntegrationDashboardStore.js"/>
+      <include name="IntegrationDashboard/controller/TU_IntegrationDashboardController.js"/>
+      <include name="Utils/TU_Utils.js" />
+      <include name="IntegrationDashboard/TU_IntegartionDashboardSummaryPage.js"/> 
+      <include name="MessageStore/model/TU_MessageStoreSummaryModel.js"/> 
+      <include name="MessageStore/view/TU_MessageStoreSummary.js" />
+         
+       <!-- <include name="IntegrationDashboard/view/TU_IntegrationDashboardSummaryView.js"/> -->
+       
+      
+    </target>
+</project>

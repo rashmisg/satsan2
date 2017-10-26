@@ -1,0 +1,24 @@
+entity: Page
+version: '1.0'
+data:
+
+- pageId: MessageDetails
+  appId: dm
+  component: JDA.dm.MessageDetails.MessageDetailsSummaryPage
+  resourceBundle: dataManagement
+- pageId: IntegrationDashboard
+  appId: dm
+  component: JDA.dm.IntegrationDashboard.IntegrationDashboardSummaryPage
+  resourceBundle: dataManagement
+# - pageId: BusinessRules
+#   appId: dm
+#   component: JDA.dm.BusinessRules.BusinessRulesSummaryPage
+#   resourceBundle: dataManagement
+# - pageId: DashBoard
+#   appId: dm
+#   component: JDA.dm.DashBoard.DashBoardSummaryPage
+#   resourceBundle: dataManagement
+# - pageId: Testing
+#   appId: dm
+#   component: JDA.dm.testing.App
+#   resourceBundle: testDataManagement

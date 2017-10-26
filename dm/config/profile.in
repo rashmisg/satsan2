@@ -1,0 +1,71 @@
+#-------------------------------------------------------------------------------
+#
+# SOURCE FILE: .profile
+#
+# DESCRIPTION: LM environment setup script.
+#
+# NOTE(S): Only "LM-generic" environment variables are set in this
+#          script.  All environment variables specific to a particular
+#          environment should be set in the environment's profile, which 
+#          should then call this script.
+#
+#-------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Setup the product's directory.
+# ------------------------------------------------------------------------------
+
+LMDIR=@LMDIR@
+export LMDIR
+
+# ------------------------------------------------------------------------------
+# Setup the LES directory for run-time output files.
+# ------------------------------------------------------------------------------
+
+if [ -z "$LESDIR" ]; then
+    LESDIR=$LMDIR
+    export LESDIR
+fi
+
+# ------------------------------------------------------------------------------
+# Setup the search path.
+# ------------------------------------------------------------------------------
+
+PATH=$PATH:$LMDIR/scripts
+export PATH
+
+# ------------------------------------------------------------------------------
+# Setup the search path for cd.
+# ------------------------------------------------------------------------------
+
+CDPATH=$CDPATH:$LMDIR:$LMDIR/src/libsrc:$LMDIR/src
+export CDPATH
+
+# ------------------------------------------------------------------------------
+# Setup the search path for shared libraries.
+# ------------------------------------------------------------------------------
+
+case $(@UNAME_PATH@ -s | @TR_PATH@ -d - | @TR_PATH@ '[A-Z]' '[a-z]') in
+aix)	
+    LIBPATH=$LIBPATH:$LMDIR/lib
+    export LIBPATH
+    ;;
+*)	
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LMDIR/lib
+    export LD_LIBRARY_PATH
+    ;;
+esac
+
+# ------------------------------------------------------------------------------
+# Setup the class path for Java JAR files.
+# ------------------------------------------------------------------------------
+
+if [ -z "$CLASSPATH" ]; then
+    CLASSPATH=$LMDIR/build/classes
+else
+    CLASSPATH=$CLASSPATH:$LMDIR/build/classes
+fi
+
+CLASSPATH=$CLASSPATH:$LMDIR/lib/*
+
+export CLASSPATH

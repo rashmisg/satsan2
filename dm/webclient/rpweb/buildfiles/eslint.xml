@@ -1,0 +1,37 @@
+<project name="LM-Webclient-ESLint" xmlns:if="ant:if">
+
+    <description>
+        This buildfile is used to run the ESLint tool against the web client code base.
+
+        For installation help, please read the following wiki documentation:
+        http://confluence.jda.com/display/wms/Javascript%3A+ESLint
+    </description>
+
+    <property environment="env" />
+
+    <!-- ==================================================================== -->
+    <!--   ESLINT                                                             -->
+    <!-- ==================================================================== -->
+    <condition property="eslint.exec" value="eslint.cmd" else="eslint">
+        <os family="windows" />
+    </condition>
+
+    <target name="rpweb-eslint" description="Run full set of eslint rules we enforce">
+
+    <exec dir="${env.DMDIR}" executable="${eslint.exec}" failonerror="true" failifexecutionfails="false" >
+            <arg line="--cache"/>
+            <arg line="--no-eslintrc"/>
+            <arg line="--config .eslintrc"/>
+            <arg line="--fix" if:true="${eslint.fix}" />
+
+            <arg value="webclient/rpweb/js"/>
+        </exec>
+    </target>
+
+    <target name="rpweb-fix-eslint" description="Fix eslint issues">
+        <antcall target="rpweb-eslint">
+            <param name="eslint.fix" value="true" />
+        </antcall>
+    </target>
+
+</project>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project app-id="dm"
+         project-dir="${DMDIR}/webclient/rpweb"
+         css-dir="${project-dir}/css"
+         output-dir="${outputDir}"
+         source="True">
+
+    <target name="DM.common"
+            type="css"
+            source-dir="${css-dir}"
+            target-dir="${output-dir}"
+            src="true"
+            debug="true">
+			
+		<include name="style.css" />
+    </target>
+	
+	<target name="DM.component"
+            source-dir="${css-dir}"
+            target-dir="${output-dir}"
+            file="${target-dir}/${name}.min.css"
+            debug="true"
+            debug-file="${target-dir}/${name}.debug.css">
+        
+    </target>
+
+
+</project>

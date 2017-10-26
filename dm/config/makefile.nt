@@ -1,0 +1,28 @@
+default: win32
+
+DIRS= \
+..\bin \
+..\include \
+..\lib \
+..\downloads \
+..\downloads\forms \
+..\downloads\components \
+..\downloads\help \
+..\downloads\res
+
+DEVDIRS= \
+..\data \
+..\log \
+..\temp
+
+
+$(DIRS):
+	mkdir $@
+
+$(DEVDIRS):
+	mkdir $@
+
+win32: $(DIRS)
+	perl .\configure.nt.pl -r "$(RELEASE)"
+
+devdirs: $(DEVDIRS)
