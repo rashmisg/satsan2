@@ -1,0 +1,29 @@
+#Ignore these directories
+#System
+.DS_Store
+#Project
+*.xcscheme
+staging/
+xcuserdata/
+bin/
+**/android/assets/www/
+!**/android/assets/www/cordova.js
+!**/android/assets/www/cordova_plugins.js
+**/ios
+node_modules
+test/result.out
+test/www
+#Ignore gradle directories
+build/
+taskArtifacts/
+inspectionProfiles/
+platforms/android/.idea/libraries
+platforms/android/.idea/dictionaries
+gradle.xml
+workspace.xml
+local.properties
+platforms/android/settings.gradle
+#Test case files
+UITests/FitNesseRoot/files/testResults
+UITests/FitNesseRoot/ErrorLogs
+UITests/FitNesseRoot/RecentChanges

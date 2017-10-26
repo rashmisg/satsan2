@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="com.jda.mobility.DialogManager"
+      version="0.1">
+
+    <name>DialogManager</name>
+    <description>JDA fork of Cordova Notification Plugin</description>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="DialogManager">
+                <param name="android-package" value="com.jda.mobility.plugin.DialogManager"/>
+            </feature>
+        </config-file>
+
+        <js-module src="src/www/android/DialogManager.js" name="DialogManager">
+            <clobbers target="Jda.mobility.plugins.DialogManager" />
+        </js-module>
+    </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="DialogManager">
+                <param name="ios-package" value="JMDialogManager"/>
+            </feature>
+        </config-file>
+
+        <js-module src="src/www/ios/DialogManager.js" name="DialogManager">
+            <clobbers target="Jda.mobility.plugins.DialogManager" />
+        </js-module>
+    </platform>
+
+    <!-- Windows plugin is injected as part of core_www and cannot inherit the js file of the other platforms -->
+    
+</plugin>

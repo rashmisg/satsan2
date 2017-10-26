@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="com.jda.mobility.TelSms"
+      version="0.0.1">
+
+    <name>TelSms</name>
+    <description>JDA Telephone and Sms Plugin</description>
+
+    <js-module src="src/www/TelSms.js" name="TelSms">
+        <clobbers target="Jda.mobility.plugins.TelSms" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="TelSms">
+                <param name="android-package" value="com.jda.mobility.plugin.TelSms"/>
+            </feature>
+        </config-file>
+    </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="TelSms">
+                <param name="ios-package" value="JMTelSms"/>
+            </feature>
+        </config-file>
+    </platform>
+</plugin>

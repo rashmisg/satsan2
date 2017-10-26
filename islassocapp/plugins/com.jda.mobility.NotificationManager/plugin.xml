@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="com.jda.mobility.NotificationManager"
+      version="0.0.1">
+
+    <name>NotificationManager</name>
+    <description>JDA Notification Manager Plugin</description>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="NotificationManager">
+                <param name="android-package" value="com.jda.mobility.plugin.NotificationManager"/>
+            </feature>
+        </config-file>
+
+        <js-module src="src/www/NotificationManager.js" name="NotificationManager">
+            <clobbers target="Jda.mobility.plugins.NotificationManager" />
+        </js-module>
+    </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NotificationManager">
+                <param name="ios-package" value="JMNotificationManager"/>
+            </feature>
+        </config-file>
+
+        <js-module src="src/www/NotificationManager.js" name="NotificationManager">
+            <clobbers target="Jda.mobility.plugins.NotificationManager" />
+        </js-module>
+    </platform>
+
+    <!-- Windows plugin is injected as part of core_www and cannot inherit the js file of the other platforms -->
+
+</plugin>

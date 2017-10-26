@@ -1,0 +1,42 @@
+{
+    "items": [{
+        "title": "Store Logistics",
+        "links": [{
+            "rel": "screen",
+            "href": "task://senchawebview?route=tasklist"
+        }, {
+            "rel": "surface",
+            "href": "/images/tab-icon-default.png"
+        }, {
+            "rel": "ios-icon",
+            "href": "http://md1npdvtaskwa03.dev.corp.local/MFProxy/Images/JDA.png"
+        }, {
+            "rel": "ios-icon2x",
+            "href": "http://md1npdvtaskwa03.dev.corp.local/MFProxy/Images/JDA2x.png"
+        },
+        {
+            "rel": "ldpi",
+            "href": "bundle:///tab_tasks_selected.png"
+        },
+        {
+            "rel": "mdpi",
+            "href": "bundle:///tab_tasks_selected.png"
+        },
+        {
+            "rel": "hdpi",
+            "href": "bundle:///tab_tasks_selected.png"
+        },
+        {
+            "rel": "xhdpi",
+            "href": "bundle:///tab_tasks_selected.png"
+        },
+        {
+            "rel": "xxhdpi",
+            "href": "bundle:///tab_tasks_selected.png"
+        },
+        {
+            "rel": "xxxhdpi",
+            "href": "bundle:///tab_tasks_selected.png"
+        }]
+    }]
+}

@@ -1,0 +1,25 @@
+{
+    "libs": [
+        "sencha-touch-2.4.2.{client-mode}.js",
+        "MobilityCore.{client-mode}.js",
+        "MobilityI18n.{client-mode}.js"
+    ],
+
+    "supportedLanguages": [
+        "en",
+        "es"
+    ],
+
+    "scripts": [
+        "MobilityScripts.{client-mode}.js"
+    ],
+
+    "messagePacks": [
+        "{LANGUAGE}/MobilityMessages.js"
+    ],
+
+    "stylesheets": [
+        "cupertino.css",
+        "MobilityStyleSheets.{client-mode}.css"
+    ]
+}

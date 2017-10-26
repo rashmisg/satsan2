@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="com.jda.mobility.NavigationStackManager"
+      version="0.0.1">
+
+    <name>NavigationStackManager</name>
+    <description>JDA Navigation Stack Manager Plugin</description>
+
+    <js-module src="src/www/NavigationStackManager.js" name="NavigationStackManager">
+        <clobbers target="Jda.mobility.plugins.NavigationStackManager" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="NavigationStackManager">
+                <param name="android-package" value="com.jda.mobility.plugin.NavigationStackManager"/>
+            </feature>
+        </config-file>
+    </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NavigationStackManager">
+                <param name="ios-package" value="JMNavigationStackManager"/>
+            </feature>
+        </config-file>
+    </platform>
+</plugin>

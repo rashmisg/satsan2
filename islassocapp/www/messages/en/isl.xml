@@ -1,0 +1,33 @@
+<locale name="en"
+        xmlns="http://www.redprairie.com"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.redprairie.com localePack.xsd"
+        version="2014-04-03T12:00">
+    <msgs msg-ns="jda.ISL">
+        <msg id="foomessage">Hello, Foo!</msg>
+        <msg id="barmessage">Goodbye, Bar!</msg>
+        <msg id="barfirstbutton">First Button</msg>
+        <msg id="barsecondbutton">Second Button</msg>
+        <msg id="fetchimagebutton">Fetch Image Functionality</msg>
+        <msg id="restockitem">Restock Item</msg>
+        <msg id="replaceitem">Replace Item</msg>
+        <msg id="clickedmessage">You clicked </msg>
+        <msg id="taskUpdatedExternally">Task updated from external source</msg>
+        <msg id="taskListUpdatedExternally">Task List updated from external source</msg>
+        <msg id="WhereIsIt">Where is it?</msg>
+        <msg id="Floorplan">Floorplan</msg>
+        <msg id="Planogram">Planogram</msg>
+        <msg id="ReturnTo">Take to</msg>
+        <msg id="Location">Get from</msg>
+        <msg id="Cancel">Cancel</msg>
+        <msg id="Send">Send</msg>
+        <msg id="Next">Next</msg>
+        <msg id="CannotFindProduct">Send to manage</msg>
+        <msg id="CannotFindProductDescription1">No worries. We'll look into it</msg>
+        <msg id="CannotFindProductDescription2">It would help us if you could describe what went wrong</msg>
+    </msgs>
+    <msgs msg-ns="jda.ISL.errormessages">
+        <msg id="datarequestfailure">Data Request Failure</msg>
+        <msg id="datapostfailure">Cannot reach server at the moment</msg>
+    </msgs>
+</locale>

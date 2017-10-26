@@ -1,0 +1,172 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"NavigationBarComponentManager\"><param name=\"ios-package\" value=\"JMNavigationBarComponentManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NotificationManager\"><param name=\"ios-package\" value=\"JMNotificationManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PageContextManager\"><param name=\"ios-package\" value=\"JMPageContextManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"DataCacheManager\"><param name=\"ios-package\" value=\"JMDataCacheManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Logger\"><param name=\"ios-package\" value=\"JMLogger\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"DatePicker\"><param name=\"ios-package\" value=\"DatePicker\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"DialogManager\"><param name=\"ios-package\" value=\"JMDialogManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NavigationStackManager\"><param name=\"ios-package\" value=\"JMNavigationStackManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Mailer\"><param name=\"ios-package\" value=\"JMMailer\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ScreenSharer\"><param name=\"ios-package\" value=\"JMScreenSharer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LoadingMaskManager\"><param name=\"ios-package\" value=\"JMLoadingMaskManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"TelSms\"><param name=\"ios-package\" value=\"JMTelSms\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "framework": {
+                "parents": {
+                    "libiconv.dylib": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "AVFoundation.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "AssetsLibrary.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "CoreVideo.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "QuartzCore.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "CoreGraphics.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "CoreImage.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "AudioToolbox.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.NavigationBarComponentManager": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.NotificationManager": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.PageContextManager": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.DataCacheManager": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.Logger": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.DatePicker": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.DialogManager": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.NavigationStackManager": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.Mailer": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.ScreenSharer": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.LoadingMaskManager": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "com.jda.mobility.TelSms": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "cordova-androidwear": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-datepicker": {
+            "PACKAGE_NAME": "com.jda.${PRODUCT_NAME:rfc1034identifier}"
+        }
+    }
+}

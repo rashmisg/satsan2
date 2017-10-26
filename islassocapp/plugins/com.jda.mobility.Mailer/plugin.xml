@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="com.jda.mobility.Mailer"
+      version="0.1">
+
+    <name>Mailer</name>
+    <description>Email Sending Plugin</description>
+
+    <js-module src="src/www/Mailer.js" name="Mailer">
+        <clobbers target="Jda.mobility.plugins.Mailer" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Mailer">
+                <param name="android-package" value="com.jda.mobility.plugin.Mailer"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+    </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Mailer">
+                <param name="ios-package" value="JMMailer" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+    </platform>
+</plugin>

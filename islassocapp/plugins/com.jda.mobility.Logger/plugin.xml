@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="com.jda.mobility.Logger"
+      version="1.0.0">
+
+    <name>Logger</name>
+    <description>Example Plugin</description>
+
+    <js-module src="src/www/Logger.js" name="Logger">
+        <clobbers target="Jda.mobility.plugins.Logger" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Logger">
+                <param name="android-package" value="com.jda.mobility.plugin.Logger"/>
+            </feature>
+        </config-file>
+    </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Logger">
+                <param name="ios-package" value="JMLogger"/>
+            </feature>
+        </config-file>
+    </platform>
+</plugin>

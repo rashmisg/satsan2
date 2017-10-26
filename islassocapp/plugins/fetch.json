@@ -1,0 +1,132 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.NavigationBarComponentManager": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/navigation-bar-component-manager"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.NotificationManager": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/notification-manager"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.PageContextManager": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/page-context-manager"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.DataCacheManager": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/data-cache-manager"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.Logger": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/logger"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.DatePicker": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/date-picker"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-datepicker": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/stgmobility/cordova-plugin-datepicker.git",
+            "subdir": ".",
+            "ref": "ee0f696e5a62df58b76dfd999d5f46fa6a8cba14"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "com.jda.mobility.DialogManager": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/dialog-manager"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.NavigationStackManager": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/navigation-stack-manager"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.Mailer": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/mailer"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.ScreenSharer": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/screen-sharer"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.LoadingMaskManager": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/loading-mask-manager"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.jda.mobility.TelSms": {
+        "source": {
+            "type": "local",
+            "path": "/Users/renjith/projects/mobiletools/plugins/tel-sms"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-androidwear": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-androidwear"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "phonegap-plugin-barcodescanner": {
+        "source": {
+            "type": "registry",
+            "id": "phonegap-plugin-barcodescanner"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

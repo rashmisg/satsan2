@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; font-src 'self' data:; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+
+        <script type="text/javascript" src="lab-2.0.3.min.js"></script>
+        <script type="text/javascript" src="Loader.js"></script>
+
+        <script type="text/javascript">
+            var replaceClientModeInUrls = function(urlArray, clientMode) {
+                var modifiedUrlArray = [];
+                for (var i = 0; i < urlArray.length; i++) {
+                    modifiedUrlArray.push(urlArray[i].replace('{client-mode}', clientMode));
+                }
+
+                return modifiedUrlArray;
+            };
+
+            var loadApplication = function(pageContext, mobileToolsJson, appJson) {
+                var route = pageContext.route,
+                    locale = pageContext.locale,
+                    language = pageContext.language,
+                    clientMode = pageContext.clientMode,
+                    nonSrcClientMode = clientMode === 'src' ? 'debug' : clientMode,
+                    appCodeRefsUrl = pageContext.appCodeRefsUrl,
+                    demoDate = pageContext.demoDate,
+                    defaultSiteId = pageContext.defaultSiteId,
+                    siteMap = pageContext.siteMap,
+                    baseUrl = pageContext.baseUrl,
+                    scriptUrls = [],
+                    stylesheetUrls = [],
+                    is24HourFormat = pageContext.is24HourFormat,
+                    devicePlatform = pageContext.platform, i;
+
+                // For the initial load, the hash is set by the client because it needs to happen after the page has loaded.
+                window.location.hash = route;
+
+                // the "libs" are loaded first to ensure that Sencha Touch and other libraries such as core + i18n
+                // are present so that message packs can be loaded prior to normal scripts being loaded
+                scriptUrls = scriptUrls.concat(replaceClientModeInUrls(mobileToolsJson.libs, nonSrcClientMode));
+
+                // Get the language code by stripping any trailing region codes, but not removing two-part langauge codes
+                // [ 'en', 'en-US', 'en_US', 'zh-hans-TW' ] => [ 'en', 'en', 'en', 'zh-hans' ]
+                language = language.replace(/[-_][a-zA-Z]+$/, '');
+
+                // Check for supported language or default to english.
+                var mobileToolsDoesNotSupportLanguage = !isSupportedLanguage(mobileToolsJson.supportedLanguages, language);
+                var appDoesNotSupportLanguage = !isSupportedLanguage(appJson.supportedLanguages, language);
+                if (mobileToolsDoesNotSupportLanguage || appDoesNotSupportLanguage) {
+                    console.error('Language is not supported: ' + language +
+                            '\nThe supported languages for Mobile Tools are: ' + mobileToolsJson.supportedLanguages +
+                            '\nThe supported languages for the App are: ' + appJson.supportedLanguages +
+                            '\nDefaulting the language to en');
+                    language = 'en';
+                }
+
+                // Build the list of message packs to load
+                var messagePacks = mobileToolsJson.messagePacks.concat(appJson.messagePacks || []);
+                for (i = 0; i < messagePacks.length; i++) {
+                    scriptUrls.push(messagePacks[i].replace('{LANGUAGE}', language));
+                }
+
+                // Build the list of mobileTools scripts to load
+                scriptUrls = scriptUrls.concat(replaceClientModeInUrls(mobileToolsJson.scripts, nonSrcClientMode));
+
+                // Build the list of stylesheets to load
+                var stylesheets = mobileToolsJson.stylesheets.concat(appJson.stylesheets || []);
+                for (i = 0; i < stylesheets.length; i++) {
+                    var stylesheetObj = stylesheets[i],
+                        platforms = stylesheetObj.platforms || [];
+
+                    if (platforms.length === 0 || platforms.indexOf(devicePlatform) > -1) {
+                        var stylesheet = stylesheetObj.stylesheet || stylesheetObj;
+                        stylesheetUrls.push(stylesheet.replace('{client-mode}', nonSrcClientMode));
+                    }
+                }
+
+                Jda.mobility.Loader.loadScript(scriptUrls);
+                Jda.mobility.Loader.loadCss(stylesheetUrls);
+
+                Jda.mobility.Loader.onReady(function() {
+                    // Custom string replacement of underscore with hyphen to compensate for device returning different values than globalize expects
+                    var localeForGlobalize = locale.replace('_', '-');
+
+                    Jda.mobility.core.Globals.setValues({
+                        'USER_LOCALE': localeForGlobalize,
+                        'SITE_ID': defaultSiteId,
+                        'IS_24H_FORMAT': is24HourFormat
+                    });
+
+                    var normalizedBaseUrl = baseUrl ? baseUrl.replace(/\/$/, '') : '';
+
+                    Jda.mobility.core.Globals.setPaths({
+                        'BASE_URL': normalizedBaseUrl,
+                        'PATH_TO_DATA_ROOT': normalizedBaseUrl + '/data/',
+                        'SRC_ROOT': appCodeRefsUrl + '/src'
+                    });
+
+                    Jda.mobility.i18n.Formatting.setUserLocale(localeForGlobalize);
+                    Jda.mobility.i18n.Formatting.setCurrencyLocale(localeForGlobalize);
+
+                    // Set Sundial to use the demoDate that came from PageContextManager.
+                    if (demoDate) {
+                        var parsedDemoDate = new Date(demoDate);
+                        Jda.mobility.core.Sundial.setServerTime(parsedDemoDate);
+                    }
+
+                    // Set ApplicationSites to use the siteMap that came from PageContextManager for buildDataServiceUrl.
+                    Jda.mobility.core.ApplicationSites.setApps(siteMap);
+
+                    // Finally fix and load the app scripts. These need to be loaded last so that all of
+                    // the page context including Site Map and Demo Date/Sundial have been made available.
+                    var appScripts = replaceClientModeInUrls(appJson.scripts, clientMode);
+
+                    Jda.mobility.Loader.loadScript(appScripts);
+                });
+            };
+
+            var isSupportedLanguage = function(supportedLanguages, language) {
+                if (!supportedLanguages) {
+                    return false;
+                }
+
+                for (var i = 0; i < supportedLanguages.length; i++) {
+                    if (supportedLanguages[i].toLowerCase().indexOf(language.toLowerCase()) != -1) {
+                        return true;
+                    }
+                }
+
+                return false;
+            };
+
+            var loadConfigurationJson = function(file, callback) {
+                var request = new XMLHttpRequest();
+                request.onload = function() {
+                    try {
+                        callback(JSON.parse(request.responseText));
+                    }
+                    catch (e) {
+                        console.error('Error parsing configuration file: "' + file + '" -- verify the file is valid JSON -- ' + e.message);
+                    }
+                };
+                request.onerror = function() {
+                    console.error('Error loading configuration file: "' + file + '" -- verify the file exists.');
+                };
+                request.open('GET', file, true);
+                request.send();
+            };
+
+            // this could eventually be cleaned up using promises
+            var loadApplicationDependencies = function() {
+                Jda.mobility.plugins.PageContextManager.getPageContext(function(pageContext) {
+
+                    loadConfigurationJson('mobility.json', function(mobileToolsJson) {
+
+                        loadConfigurationJson('app.json', function(appJson) {
+
+                            loadApplication(pageContext, mobileToolsJson, appJson);
+                        });
+                    });
+                });
+            };
+
+            document.addEventListener("deviceready", loadApplicationDependencies, false);
+        </script>
+    </head>
+</html>

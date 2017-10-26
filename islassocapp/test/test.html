@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clientside Tests</title>
+
+        <meta charset="UTF-8">
+
+        <!-- Code Dependencies -->
+        <script type='text/javascript' src='platform-lib/lab-2.0.3.min.js'></script>
+        <script type='text/javascript' src='platform-lib/Loader.js'></script>
+        <script type='text/javascript' src='platform-lib/sencha-touch-2.4.2.debug.js'></script>
+
+        <script type="text/javascript" src="platform-lib/MobilityCore.debug.js"></script>
+        <script type="text/javascript" src="platform-lib/MobilityI18n.debug.js"></script>
+
+        <script type='text/javascript'>
+            var localeForGlobalize = 'en-US';
+
+            Jda.mobility.core.Globals.setValues({
+                'USER_LOCALE': localeForGlobalize,
+            });
+
+            Jda.mobility.i18n.Formatting.setUserLocale(localeForGlobalize);
+            Jda.mobility.i18n.Formatting.setCurrencyLocale(localeForGlobalize);
+        </script>
+
+        <script type="text/javascript" src="platform-lib/MobilityScripts.debug.js"></script>
+
+        <!-- Test Dependency Libs -->
+        <link rel="stylesheet" href="test-lib/mocha.css" type="text/css" charset="utf-8" />
+        <script type="text/javascript" src="test-lib/mocha.js"></script>
+        <script type="text/javascript" src="test-lib/should.js"></script>
+        <script type="text/javascript" src="test-lib/blanket.js"></script>
+        <script type="text/javascript" src="test-lib/sinon.js"></script>
+
+        <script type="text/javascript">
+            mocha.setup('bdd');
+        </script>
+
+        <script type='text/javascript' src='test.js'></script>
+    </head>
+    <body>
+        <div id="mocha"></div>
+    </body>
+</html>
+

@@ -1,0 +1,93 @@
+<project project-dir="www"
+         js-dir="${project-dir}/js"
+         css-dir="${project-dir}/css"
+         images-dir="${project-dir}/images"
+         libs-dir="${project-dir}/js/libs"
+         app-id="isl"
+         output-dir="${REFSDIR}/web/isl">
+
+    <target name="ISLStyleSheetsCommon"
+            type="css"
+            source-dir="${css-dir}">
+        <include name="isl_common.css" />
+    </target>
+
+    <target name="ISLStyleSheetsMaterial"
+            type="css"
+            source-dir="${css-dir}">
+        <include name="isl_material.css" />
+    </target>
+
+
+    <target name="ISLStyleSheetsAndroid"
+            type="css"
+            source-dir="${css-dir}">
+        <include name="isl_android_delta.css" />
+    </target>
+
+    <target name="ISLStyleSheetsiOS"
+            type="css"
+            source-dir="${css-dir}">
+        <include name="isl_ios_delta.css" />
+    </target>
+
+    <target name="ISLStyleSheetsWindows"
+            type="css"
+            source-dir="${css-dir}">
+        <include name="isl_windows_delta.css" />
+    </target>
+    <target name="ISLImages"
+            type="copy"
+            source-dir="${images-dir}"
+            target-dir="${output-dir}/resources" >
+        </target>
+    <target name="isl"
+            type="js"
+            source-dir="${js-dir}">
+
+        <!-- <include name="ISL/override/Button.js" /> -->
+        <include name="ISL/Utils/Plugins/PullToRefreshContainer.js" />
+        <include name="ISL/Utils/Plugins/PullToRefresh.js" />
+        <include name="ISL/Utils/Constants.js" />
+        <include name="ISL/Utils/ImageUtil.js" />
+        <include name="ISL/Utils/TimeUtil.js" />
+        <include name="ISL/Utils/DataService.js" />
+        <include name="ISL/Utils/HistoryUtil.js" />
+        <include name="ISL/Store/TaskStore.js" />
+        <include name="ISL/Controller/TaskDetailsController.js" />
+        <include name="ISL/Controller/Main.js" />
+        <include name="ISL/View/Main.js" />
+        <include name="ISL/View/TaskDetailsView.js" />
+        <include name="ISL/override/mobility/controller/NavigationController.js" />
+        <!-- Wear -->
+        <include name="ISL/Controller/Wear.js" />
+        <include name="ISL/View/Wear.js" />
+        <include name="ISL/View/ExceptionMenu.js" />
+        <include name="ISL/View/EscalatePopover.js" />
+        <include name="ISL/View/OutOfStockPopover.js" />
+        <include name="ISL/View/ItemDamagedPopover.js" />
+        <include name="ISL/View/MessageView.js" />
+        <!--App -->
+        <include name="app.js" />
+    </target>
+
+    <target name="ISL"
+            type="locale"
+            source-dir="${project-dir}/messages/" />
+
+    <target name="ISLimages"
+        type="copy"
+        source-dir="${images-dir}"
+        target-dir="${output-dir}/resources" >
+    </target>
+
+    <target name="copy-libraries"
+            type="copy"
+            source-dir="${libs-dir}"
+            target-dir="${output-dir}/libs" />
+
+    <!-- <target name="copy-images"
+            type="copy"
+            source-dir="${project-dir}/images"
+            target-dir="${output-dir}/images" /> -->
+</project>

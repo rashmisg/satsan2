@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="com.jda.mobility.LoadingMaskManager"
+      version="0.0.1">
+
+    <name>LoadingMaskManager</name>
+    <description>JDA Loading Mask Manager</description>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="LoadingMaskManager">
+                <param name="android-package" value="com.jda.mobility.plugin.LoadingMaskManager"/>
+            </feature>
+        </config-file>
+
+        <js-module src="src/www/LoadingMaskManager.js" name="LoadingMaskManager">
+            <clobbers target="Jda.mobility.plugins.LoadingMaskManager" />
+        </js-module>
+    </platform>
+    
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="LoadingMaskManager">
+                <param name="ios-package" value="JMLoadingMaskManager"/>
+            </feature>
+        </config-file>
+
+        <js-module src="src/www/LoadingMaskManager.js" name="LoadingMaskManager">
+            <clobbers target="Jda.mobility.plugins.LoadingMaskManager" />
+        </js-module>
+    </platform>
+
+    <!-- Windows plugin is injected as part of core_www and cannot inherit the js file of the other platforms -->
+
+</plugin>

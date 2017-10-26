@@ -1,0 +1,86 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.0'
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url "${artifactoryUrl}/MOBILITY-V"
+        }
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.application'
+
+configurations.all {
+    // check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+dependencies {
+    // Uncomment this to use the local MobileTools. Note that you'll need to comment out the remote line below
+    // and also update the settings.gradle file with the local location of your MobileTools project.
+    compile 'org.apache.cordova:CordovaLib:4.1.1'
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.loopj.android:android-async-http:1.4.6'
+    compile 'org.mapsforge:svg-android:0.4.3'
+    compile 'com.mcxiaoke.volley:library:1.0.15'
+    compile project(':MobileTools')
+    //compile(name:'MobileTools', ext:'aar')
+    //compile 'com.jda.mobility:MobileTools:+'
+    compile fileTree(include: '*.jar', dir: 'libs')
+    //wearApp project(':wear')
+    compile('com.google.android.gms:play-services-wearable:8.3.0') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion '23.0.3'
+
+    defaultConfig {
+        applicationId "com.jda.isl"
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = [ 'src' ]
+            resources.srcDirs = [ 'src' ]
+            aidl.srcDirs = [ 'src' ]
+            renderscript.srcDirs = [ 'src' ]
+            res.srcDirs = [ 'res' ]
+            assets.srcDirs = [ 'assets' ]
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("isl_release_key.keystore")
+            storePassword "islfocus2016"
+            keyAlias "isl_release_key"
+            keyPassword "islfocus2016"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}

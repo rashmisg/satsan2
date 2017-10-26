@@ -1,0 +1,14 @@
+{
+    "demoDate": null,
+
+    "cordova-plugins": [
+    ],
+
+    "code": [
+        "../www/js/HelloWorld/Controller/Bar.js"
+    ],
+
+    "tests": [
+        "./www/js/HelloWorld/Controller/BarTests.js"
+    ]
+}

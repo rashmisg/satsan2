@@ -1,0 +1,98 @@
+<project xmlns:if="ant:if" name="isl" default="default">
+    <property environment="env" />
+    <!-- Load the Cordova config.xml, using the widget.name element for the APP_NAME -->
+    <xmlproperty file="config.xml" />
+    <property name="APP_NAME" value="${widget.name}" />
+    <property name="APP_BUILD_DIR" location="./build" />
+    <property name="APP_WEB_BUILD_DIR" value="${APP_BUILD_DIR}/web/${APP_NAME}" />
+    <property name="JMT_BUILD_DIR" value="${env.JMTDIR}/build" />
+    <property name="JMT_WEB_LIBS_BUILD_DIR" value="${JMT_BUILD_DIR}/web/MobileToolsLibs" />
+    <property name="JMT_WEB_BUILD_DIR" value="${JMT_BUILD_DIR}/web/MobileTools" />
+    <property name="TEST_PLATFORM_LIB_DIR" location="test/platform-lib" />
+    <target name="client" description="Build the isl Application using CSBuilder">
+        <java jar="${env.JMTDIR}/lib/csbuilder-fat-8.2.0.3.jar" fork="true" failonerror="true" inputstring="">
+            <env key="REFSDIR" value="${basedir}" />
+            <env key="REFSPKGDIR" value="${APP_BUILD_DIR}" />
+            <arg value="-c" />
+            <arg value="csbuilder.xml" />
+            <arg value="-t" />
+            <arg value="all" />
+        </java>
+    </target>
+    <target name="copyResources" depends="client">
+        <copy todir="${APP_BUILD_DIR}/web/${APP_NAME}">
+            <fileset dir="www">
+                <include name="app.json" />
+                <include name="mobility.json" />
+                <include name="tabs.json" />
+                <include name="index.html" />
+            </fileset>
+        </copy>
+    </target>
+    <macrodef name="gen-zip">
+        <attribute name="mode" />
+        <!-- It'd be nice to use the 'condition' tag here, but you can't use them within a macrodef -->
+        <attribute name="cssMode" />
+        <attribute name="libMode" />
+        <sequential>
+            <property name="APP_LOCALE_PACK_DIR" value="${APP_BUILD_DIR}/web/refs/localePacks" />
+            <property name="JMT_LOCALE_PACK_DIR" value="${JMT_BUILD_DIR}/web/refs/localePacks" />
+            <property name="APP_RESOURCES_DIR" value="app" />
+            <zip destfile="${APP_BUILD_DIR}/zip/${APP_NAME}.@{mode}.zip">
+                <zipfileset dir="${APP_WEB_BUILD_DIR}" includes="libs/*.js" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${APP_WEB_BUILD_DIR}" includes="*.@{mode}.js" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${APP_WEB_BUILD_DIR}" includes="*.@{cssMode}.css" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${APP_WEB_BUILD_DIR}" includes="*.json" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${APP_WEB_BUILD_DIR}" includes="images/**/*" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${APP_WEB_BUILD_DIR}" includes="resources/**/*" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${APP_WEB_BUILD_DIR}" includes="index.html" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${APP_LOCALE_PACK_DIR}" includes="**/*.js" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${env.JMTDIR}/www/lib" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${JMT_WEB_LIBS_BUILD_DIR}" includes="*.@{libMode}.js" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${JMT_WEB_BUILD_DIR}" includes="*.@{libMode}.js" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${JMT_WEB_BUILD_DIR}" includes="*.@{cssMode}.css" prefix="${APP_RESOURCES_DIR}" />
+                <zipfileset dir="${JMT_LOCALE_PACK_DIR}" includes="**/*.js" prefix="${APP_RESOURCES_DIR}" />
+            </zip>
+        </sequential>
+    </macrodef>
+    <target name="genZips" description="Generate the Zip files that the mobile apps download" depends="client, copyResources">
+        <gen-zip mode="min" cssMode="min" libMode="min" />
+        <gen-zip mode="debug" cssMode="debug" libMode="debug" />
+        <gen-zip mode="src" cssMode="debug" libMode="debug" />
+    </target>
+    <target name="copyTestResources" description="Add the mobilityScripts to the test project">
+        <copy todir="${TEST_PLATFORM_LIB_DIR}">
+            <fileset dir="${JMT_WEB_LIBS_BUILD_DIR}">
+                <include name="MobilityCore.debug.js" />
+                <include name="MobilityI18n.debug.js" />
+            </fileset>
+            <fileset dir="${JMT_WEB_BUILD_DIR}">
+                <include name="MobilityScripts.debug.js" />
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean" description="clean up">
+        <delete dir="${APP_BUILD_DIR}" />
+        <delete dir="${TEST_PLATFORM_LIB_DIR}" />
+        <delete dir="./platforms/ios/www/app" />
+        <delete dir="./platforms/android/assets/www/app" />
+        <delete dir="./platforms/windows/www/app" />
+    </target>
+    <target name="embedAppCode" depends="genZips">
+        <available file="./platforms/ios" type="dir" property="platform.ios.available" />
+        <available file="./platforms/android" type="dir" property="platform.android.available" />
+        <available file="./platforms/windows" type="dir" property="platform.windows.available" />
+        <property name="minZipFile" value="${APP_BUILD_DIR}/zip/${APP_NAME}.min.zip" />
+        <sequential if:true="${platform.ios.available}">
+            <unzip src="${minZipFile}" dest="./platforms/ios/www" />
+        </sequential>
+        <sequential if:true="${platform.android.available}">
+            <unzip src="${minZipFile}" dest="./platforms/android/assets/www" />
+        </sequential>
+        <sequential if:true="${platform.windows.available}">
+            <unzip src="${minZipFile}" dest="./platforms/windows/www" />
+        </sequential>
+    </target>
+    <target name="default" depends="client, copyResources, copyTestResources, genZips, embedAppCode" />
+</project>

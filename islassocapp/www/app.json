@@ -1,0 +1,32 @@
+{
+    "messagePacks": [
+        "{LANGUAGE}/isl.js"
+    ],
+
+    "supportedLanguages": [
+        "en",
+        "es"
+    ],
+
+    "scripts": [
+        "libs/RippleService.js",
+        "isl.{client-mode}.js"
+    ],
+
+    "stylesheets": [
+        {
+            "stylesheet": "ISLStyleSheetsCommon.{client-mode}.css"
+        },
+        {
+            "stylesheet": "ISLStyleSheetsMaterial.{client-mode}.css"
+        },
+        {
+            "platforms":["android"],
+            "stylesheet":"ISLStyleSheetsAndroid.{client-mode}.css"
+        },
+        {
+            "platforms":["ios"],
+            "stylesheet":"ISLStyleSheetsiOS.{client-mode}.css"
+        }
+    ]
+}

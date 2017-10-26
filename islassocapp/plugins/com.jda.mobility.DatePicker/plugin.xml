@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="com.jda.mobility.DatePicker"
+      version="0.1">
+
+    <name>DialogManager</name>
+    <description>Cordova Notification Plugin</description>
+
+    <dependency id="cordova-plugin-datepicker" url="https://github.com/stgmobility/cordova-plugin-datepicker.git" commit="ee0f696e5a62df58b76dfd999d5f46fa6a8cba14"/>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="DateTimePicker">
+                <param name="android-package" value="com.jda.mobility.plugin.DateTimePicker"/>
+            </feature>
+        </config-file>
+
+        <js-module src="src/www/android/DatePicker.js" name="DatePicker">
+            <clobbers target="Jda.mobility.plugins.DatePicker" />
+        </js-module>
+    </platform>
+
+    <platform name="ios">
+        <js-module src="src/www/ios/DatePicker.js" name="DatePicker">
+            <clobbers target="Jda.mobility.plugins.DatePicker" />
+        </js-module>
+    </platform>
+</plugin>
